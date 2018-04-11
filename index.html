@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<title>Budget Forum</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/data.js"></script>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="style/egkepq.css">
+<body>
+
+
+<script type="text/javascript">
+
+// ohio bar chart
+function allocation(){
+
+$.get('allocation.csv', function(csv) {
+    $('#stage').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        data: {
+            csv: csv
+        },
+        title: {
+            text: 'College Allocations by Centers and Programs (2016-17)'
+        },
+        yAxis: {
+            title: {
+                text: 'Percent '
+            }
+        }
+    });
+});
+
+};
+
+
+// revenue
+
+function gross_revenue(){
+
+$.get('revenue.csv', function(csv) {
+    $('#stage').highcharts({
+        chart: {
+            type: 'line'
+        },
+        data: {
+            csv: csv
+        },
+        title: {
+            text: 'Gross Revenue by Department'
+        },
+        yAxis: {
+            title: {
+                text: 'Revenue'
+            }
+        }
+    });
+});
+
+};
+
+
+</script>
+<div class='w3-row'>
+<div id='summary' class=' w3-container w3-third'>
+    <table class ='w3-table w3-large w3-bordered w3-hoverable'>
+  <tr>
+    <th></th>
+    <th >2014-15</th>
+    <th>2015-16</th>
+    <th>2016-17</th>
+  </tr>
+  <tr>
+    <td>Gross Revenue</td>
+    <td>$3,598,015<br>  </td>
+    <td>$3,662,576</td>
+    <td onclick='gross_revenue()'>$3,632,853</td>
+  </tr>
+  <tr>
+    <td>Revenue After Taxes</td>
+    <td>$3,215,583  </td>
+    <td>$3,270,585</td>
+    <td>$3,178,745</td>
+  </tr>
+  <tr>
+    <td>Operating Expenses</td>
+    <td>$776,733  </td>
+    <td>$765,523</td>
+    <td>$713,819</td>
+  </tr>
+  <tr>
+    <td>Net College Revenue</td>
+    <td>$2,438,850</td>
+    <td>$2,505,062</td>
+    <td>$2,464,927</td>
+  </tr>
+  <tr>
+    <td>Departmental &amp; Center <br>Allocations</td>
+    <td>$2,127,871</td>
+    <td>$1,896,577</td>
+    <td  onclick='allocation()'>$2,563,640</td>
+  </tr>
+  <tr>
+    <td>Net Profit</td>
+    <td>$310,979</td>
+    <td>$608,485</td>
+    <td>-$98,713</td>
+  </tr>
+</table>
+
+</div>
+
+<div id="stage" class = 'w3-container w3-twothird'></div>
+</div>
+</body>
+</html>
