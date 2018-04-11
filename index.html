@@ -8,7 +8,7 @@
 <script type="text/javascript" src="https://code.highcharts.com/modules/data.js"></script>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="style/egkepq.css">
+<link rel="stylesheet" href="style/style.css">
 <body>
 
 
@@ -66,20 +66,22 @@ $.get('revenue.csv', function(csv) {
 
 
 </script>
+<div class="w3-container">
+<h1>Budget Summary</h1>
 <div class='w3-row'>
-<div id='summary' class=' w3-container w3-third'>
-    <table class ='w3-table w3-large w3-bordered w3-hoverable'>
+<div id='summary' class='w3-container w3-third'>
+    <table class ='w3-table w3-card w3-bordered w3-hoverable'>
   <tr>
     <th></th>
-    <th >2014-15</th>
+    <th>2014-15</th>
     <th>2015-16</th>
     <th>2016-17</th>
   </tr>
-  <tr>
+  <tr onmouseover='gross_revenue()'>
     <td>Gross Revenue</td>
     <td>$3,598,015<br>  </td>
     <td>$3,662,576</td>
-    <td onclick='gross_revenue()'>$3,632,853</td>
+    <td>$3,632,853</td>
   </tr>
   <tr>
     <td>Revenue After Taxes</td>
@@ -99,11 +101,11 @@ $.get('revenue.csv', function(csv) {
     <td>$2,505,062</td>
     <td>$2,464,927</td>
   </tr>
-  <tr>
+  <tr onmouseover='allocation()'>
     <td>Departmental &amp; Center <br>Allocations</td>
     <td>$2,127,871</td>
     <td>$1,896,577</td>
-    <td  onclick='allocation()'>$2,563,640</td>
+    <td>$2,563,640</td>
   </tr>
   <tr>
     <td>Net Profit</td>
