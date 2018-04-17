@@ -41,9 +41,9 @@ $.get('allocation.csv', function(csv) {
 
 // revenue
 
-function gross_revenue(){
+function gross_revenue(file, title){
 
-$.get('revenue.csv', function(csv) {
+$.get(file, function(csv) {
     $('#stage').highcharts({
         chart: {
             type: 'line'
@@ -52,7 +52,7 @@ $.get('revenue.csv', function(csv) {
             csv: csv
         },
         title: {
-            text: 'Gross Revenue by Department'
+            text:  title 
         },
         yAxis: {
             title: {
@@ -64,6 +64,7 @@ $.get('revenue.csv', function(csv) {
 
 };
 
+var revenue_aftertax = gross_revenue;
 
 </script>
 <div class="w3-container">
@@ -77,13 +78,13 @@ $.get('revenue.csv', function(csv) {
     <th>2015-16</th>
     <th>2016-17</th>
   </tr>
-  <tr onmouseover='gross_revenue()'>
+  <tr onmouseover='gross_revenue("revenue.csv","Gross Revenue by Department")'>
     <td>Gross Revenue</td>
     <td>$3,598,015<br>  </td>
     <td>$3,662,576</td>
     <td>$3,632,853</td>
   </tr>
-  <tr>
+  <tr onmouseover='revenue_aftertax("aftertax.csv","Revenue After University Taxes")'>
     <td>Revenue After Taxes</td>
     <td>$3,215,583  </td>
     <td>$3,270,585</td>
