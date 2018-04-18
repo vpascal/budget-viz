@@ -69,6 +69,67 @@ $.get(file, function(csv) {
 
 var revenue_aftertax = gross_revenue;
 
+// pie chart
+
+function piechart(){
+Highcharts.chart('stage', {
+  chart: {
+    plotBackgroundColor: null,
+    plotBorderWidth: null,
+    plotShadow: false,
+    type: 'pie'
+  },
+
+
+  title: {
+    text: 'Departmental and Center Allocations'
+  },
+
+
+  tooltip: {
+    valuePrefix: "$",
+    pointFormat: '{series.name}: {point.percentage:.1f}%  <br> Amount: {point.y} '
+  },
+
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      dataLabels: {
+        enabled: true,
+        color:'#000000',
+        connectorColor: '#000000',
+        format: '{point.name}: {point.percentage: .1f}% <br> Amount:' +'$'+'{point.y: ,.0f}'
+      },
+      showInLegend: true,
+       point: {
+                events: {
+                    click: function () {
+                        if(this.name =='Centers and Programs'){
+                            allocation();
+                        };
+                    }
+                }
+            }
+    }
+  },
+
+
+  series: [{
+    name: 'Percent',
+    colorByPoint: true,
+    data: [{
+      name: 'Departments',
+      y: 1699207
+    }, {
+      name: 'Centers and Programs',
+      y: 864433
+   }]
+  }]
+
+
+})};
+
 </script>
 
 <div class="w3-container">
@@ -106,7 +167,7 @@ var revenue_aftertax = gross_revenue;
     <td>$2,505,062</td>
     <td>$2,464,927</td>
   </tr>
-  <tr onmouseover='allocation()'>
+  <tr onmouseover='piechart()'>
     <td>Departmental &amp; Center <br>Allocations</td>
     <td>$2,127,871</td>
     <td>$1,896,577</td>
