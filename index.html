@@ -16,9 +16,9 @@
 
 // allocations
 
-function allocation(){
+function allocation(file, title){
 
-$.get('allocation.csv', function(csv) {
+$.get(file, function(csv) {
     $('#stage').highcharts({
         chart: {
             type: 'bar'
@@ -27,11 +27,11 @@ $.get('allocation.csv', function(csv) {
             csv: csv
         },
         title: {
-            text: 'College Allocations by Centers and Programs (2016-17)'
+            text: title
         },
         yAxis: {
             title: {
-                text: 'Percent '
+                text: 'Amount'
             }
         }
     });
@@ -106,7 +106,9 @@ Highcharts.chart('stage', {
                 events: {
                     click: function () {
                         if(this.name =='Centers and Programs'){
-                            allocation();
+                            allocation('allocation.csv','College Allocations by Centers and Programs');
+                        } else {
+                            allocation('depart_allocation.csv','College Allocations by Departments')
                         };
                     }
                 }
