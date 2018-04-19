@@ -9,144 +9,12 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/funnel.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="style/style.css">
-<body>
+<body onload='funnel()'>
 
 
-<script type="text/javascript">
-
-// allocations
-
-function allocation(file, title){
-
-$.get(file, function(csv) {
-    $('#stage').highcharts({
-        chart: {
-            type: 'bar'
-           
-        },
-
-        data: {
-            csv: csv
-
-        },
-
-        title: {
-            text: title
-        },
-        yAxis: {
-            title: {
-                text: 'Amount'
-            }
-        }
-    });
-});
-
-};
-
-
-// revenue
-
-function gross_revenue(file, title){
-
-$.get(file, function(csv) {
-    $('#stage').highcharts({
-        chart: {
-            type: 'line'
-        },
-        data: {
-            csv: csv
-        },
-        title: {
-            text:  title 
-        },
-        yAxis: {
-            title: {
-                text: 'Revenue'
-            }
-        }
-    });
-});
-
-};
-
-// gross revenue
-
-var revenue_aftertax = gross_revenue;
-
-// pie chart
-
-function piechart(){
-Highcharts.chart('stage', {
-  chart: {
-    type: 'pie',
-    options3d: {
-            enabled: true,
-            alpha: 45,
-            beta: 0
-        }
-  },
-
-
-  title: {
-    text: 'Departmental and Center Allocations'
-  },
- 
- subtitle: {
-    text: 'Click to drill down'
-},
-
-  tooltip: {
-    valuePrefix: "$",
-    pointFormat: '{series.name}: {point.percentage:.1f}%  <br> Amount: {point.y} '
-  },
-
-  plotOptions: {
-    pie: {
-      allowPointSelect: true,
-      depth: 35,
-      cursor: 'pointer',
-      dataLabels: {
-        enabled: true,
-        color:'#000000',
-        connectorColor: '#000000',
-        format: '{point.name}: {point.percentage: .1f}% <br> Amount:' +'$'+'{point.y: ,.0f}'
-      },
-      showInLegend: true,
-       point: {
-                events: {
-                    click: function () {
-                        if(this.name =='Centers and Programs'){
-                            allocation('allocation.csv','College Allocations by Centers and Programs');
-                        } else {
-                            allocation('depart_allocation.csv','College Allocations by Departments')
-                        };
-                    }
-                }
-            }
-    }
-  },
-
-
-  series: [{
-    name: 'Percent',
-    colorByPoint: true,
-    data: [{
-      name: 'Departments',
-      color: '#FF6107',
-      y: 1699207
-    }, {
-      name: 'Centers and Programs',
-      color: '#429FFD',
-      y: 864433
-   }]
-  }]
-
-
-})};
-
-</script>
 
 <div class="w3-container">
 <h1>Budget Summary</h1>
@@ -154,10 +22,10 @@ Highcharts.chart('stage', {
 <div id='summary' class='w3-container w3-third'>
     <table class ='w3-table w3-card w3-bordered w3-hoverable'>
   <tr>
-    <th></th>
-    <th>2014-15</th>
-    <th>2015-16</th>
-    <th>2016-17</th>
+    <th onmouseover='funnel()'></th>
+    <th onmouseover='funnel()'>2014-15</th>
+    <th onmouseover='funnel()'>2015-16</th>
+    <th onmouseover='funnel()'>2016-17</th>
   </tr>
   <tr onmouseover='gross_revenue("revenue.csv","Gross Revenue by Department")'>
     <td>Gross Revenue</td>
@@ -199,7 +67,12 @@ Highcharts.chart('stage', {
 
 </div>
 
-<div id="stage" class = 'w3-container w3-twothird'></div>
+<div id="stage" class = 'w3-container w3-twothird'>
+
 </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
