@@ -1,6 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,500,700,700i);
 
-body {    
+body, h1 {    
   font-family: 'Fira Sans', sans-serif;
   color: #333;
+}
+
+
+.highcharts-pie-series .highcharts-point {
+	stroke: #EDE;
+	stroke-width: 1px;
+}
+.highcharts-pie-series .highcharts-data-label-connector {
+	stroke: silver;
+	stroke-dasharray: 2, 2;
+	stroke-width: 2px;
+}
+
+.highcharts-title, .highcharts-subtitle, .highcharts-legend {
+
+	font-family: 'Fira Sans', sans-serif;
 }

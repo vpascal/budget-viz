@@ -6,7 +6,9 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
 <script type="text/javascript" src="https://code.highcharts.com/modules/data.js"></script>
-
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="style/style.css">
 <body>
@@ -22,10 +24,14 @@ $.get(file, function(csv) {
     $('#stage').highcharts({
         chart: {
             type: 'bar'
+           
         },
+
         data: {
             csv: csv
+
         },
+
         title: {
             text: title
         },
@@ -74,10 +80,12 @@ var revenue_aftertax = gross_revenue;
 function piechart(){
 Highcharts.chart('stage', {
   chart: {
-    plotBackgroundColor: null,
-    plotBorderWidth: null,
-    plotShadow: false,
-    type: 'pie'
+    type: 'pie',
+    options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+        }
   },
 
 
@@ -97,6 +105,7 @@ Highcharts.chart('stage', {
   plotOptions: {
     pie: {
       allowPointSelect: true,
+      depth: 35,
       cursor: 'pointer',
       dataLabels: {
         enabled: true,
@@ -125,9 +134,11 @@ Highcharts.chart('stage', {
     colorByPoint: true,
     data: [{
       name: 'Departments',
+      color: '#FF6107',
       y: 1699207
     }, {
       name: 'Centers and Programs',
+      color: '#429FFD',
       y: 864433
    }]
   }]
