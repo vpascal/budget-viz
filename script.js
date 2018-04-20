@@ -1,3 +1,6 @@
+
+var zoom;
+
 // funnel summary
 
 function funnel(){
@@ -35,8 +38,7 @@ Highcharts.chart('stage', {
     ]
   }]
 });
- 
-
+  zoom = 'funnel';
 };
 
 // allocations
@@ -83,6 +85,7 @@ $.get(file, function(csv) {
     });
 });
 
+
 };
 
 
@@ -118,6 +121,9 @@ var revenue_aftertax = gross_revenue;
 // pie chart
 
 function piechart(){
+
+zoom = 'piechart';
+  
 Highcharts.chart('stage', {
   chart: {
     type: 'pie',
@@ -191,4 +197,5 @@ Highcharts.chart('stage', {
 $('#zoom').click(function () {
   $('#summary').toggle();
   $('#stage').toggleClass('fullscreen');
+  window[zoom]().reflow();
 });
