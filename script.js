@@ -35,6 +35,12 @@ Highcharts.chart('stage', {
     ]
   }]
 });
+
+   $('h1').bind('mousedown', function () {
+        $(this).toggleClass('modal');
+        $('.chart', this).highcharts().reflow();
+    });
+
 };
 
 // allocations
