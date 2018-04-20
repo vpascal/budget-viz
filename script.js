@@ -22,6 +22,7 @@ Highcharts.chart('stage', {
       width: '45%'
     }
   },
+  colors: ["#ff3d00", "#ffc400", "#616161"],
   legend: {
     enabled: false
   },
@@ -61,7 +62,6 @@ $.get(file, function(csv) {
             customButton: {
                 text: '<< Back',
                 x: -50,
-                symbolFill: '#03A9F4',
                 onclick: function () {
                     piechart();
                 }
