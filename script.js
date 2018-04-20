@@ -49,12 +49,18 @@ $.get(file, function(csv) {
 
         data: {
             csv: csv
-
         },
 
         title: {
             text: title
         },
+
+        plotOptions: {
+        series: {
+            color: '#f15c80'
+        }
+    },
+
 
           exporting: {
         buttons: {
