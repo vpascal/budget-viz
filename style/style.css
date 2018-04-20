@@ -21,14 +21,11 @@ body, h1 {
 	font-family: 'Fira Sans', sans-serif;
 }
 
-.modal {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: -100;
-    background: rgba(0, 0, 0, 0.7);
+
+.fullscreen{
+  width: 100%;
 }
-.modal .chart {
-    height: 80%;
+
+.highcharts-container, .highcharts-container svg {
+  width: 100% !important;
 }
