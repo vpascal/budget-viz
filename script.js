@@ -1,3 +1,18 @@
+// Define a few vars
+var zoom;
+
+//table row highlihgt
+
+function row_highlight(){
+$('table tr').each(function(a,b){
+    $(b).click(function(){
+         $('table tr').css('background','#ffffff');
+         $(this).css('background','#ffbb00');   
+    });
+});
+}
+
+
 // funnel summary
 
 function funnel(){
@@ -6,7 +21,10 @@ Highcharts.chart('stage', {
     type: 'funnel'
   },
   title: {
-    text: 'Revenue Summary 2016-17'
+    text: 'Revenue Summary 2016-17',
+    style: {
+      fontSize: 22
+    }
   },
   plotOptions: {
     series: {
@@ -14,9 +32,14 @@ Highcharts.chart('stage', {
         enabled: true,
         format: '<b>{point.name}</b> ({point.y:,.0f})',
         color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
-        softConnector: true
+        softConnector: true,
+        style: {
+          fontSize: 17,
+          fontWeight: 200,
+          lineHeight: 20
+        }
       },
-      center: ['50%', '50%'],
+      center: ['35%', '50%'],
       neckWidth: '20%',
       neckHeight: '15%',
       width: '45%'
@@ -35,6 +58,10 @@ Highcharts.chart('stage', {
     ]
   }]
 });
+  zoom = 'funnel';
+
+  row_highlight(); 
+
 };
 
 // allocations
@@ -81,12 +108,16 @@ $.get(file, function(csv) {
     });
 });
 
+row_highlight();
+
 };
 
 
 // revenue
 
 function gross_revenue(file, title){
+
+zoom = "gross_revenue('revenue.csv","Gross Revenue by Department')";
 
 $.get(file, function(csv) {
     $('#stage').highcharts({
@@ -97,7 +128,10 @@ $.get(file, function(csv) {
             csv: csv
         },
         title: {
-            text:  title 
+            text:  title,
+            style: {
+            fontSize: 22
+            } 
         },
         yAxis: {
             title: {
@@ -106,6 +140,8 @@ $.get(file, function(csv) {
         }
     });
 });
+
+ row_highlight();
 
 };
 
@@ -116,6 +152,11 @@ var revenue_aftertax = gross_revenue;
 // pie chart
 
 function piechart(){
+
+ row_highlight(); 
+
+zoom = 'piechart';
+  
 Highcharts.chart('stage', {
   chart: {
     type: 'pie',
@@ -128,7 +169,10 @@ Highcharts.chart('stage', {
 
 
   title: {
-    text: 'Departmental and Center Allocations'
+    text: 'Departmental and Center Allocations',
+    style: {
+      fontSize: 22
+    }
   },
  
  subtitle: {
@@ -149,7 +193,12 @@ Highcharts.chart('stage', {
         enabled: true,
         color:'#000000',
         connectorColor: '#000000',
-        format: '{point.name}: {point.percentage: .1f}% <br> Amount:' +'$'+'{point.y: ,.0f}'
+        format: '{point.name}: {point.percentage: .1f}%  <br> Amount:' +'$'+'{point.y: ,.0f}',
+        style: {
+          fontSize: 17,
+          fontWeight: 200,
+          lineHeight: 20
+        }
       },
       showInLegend: true,
        point: {
@@ -183,3 +232,12 @@ Highcharts.chart('stage', {
 
 
 })};
+
+
+
+$('#zoom').click(function () {
+  $('#summary').toggle();
+  $('#stage').toggleClass('fullscreen');
+  window[zoom]().reflow();
+});
+
