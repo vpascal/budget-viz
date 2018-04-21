@@ -33,3 +33,10 @@ body, h1 {
   width: 100%;
   min-height: 650px;
  }
+
+ media (min-width: 1281px) {
+  
+   width: 100%;
+  min-height: 700px;
+  
+}
