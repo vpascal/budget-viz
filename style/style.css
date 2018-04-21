@@ -24,5 +24,12 @@ body, h1 {
 
 .fullscreen{
   width: 100%;
-  min-height: 650px;
+  min-height: 500px;
 }
+
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+
+   /* Styles for Desktops */
+  width: 100%;
+  min-height: 650px;
+ }
