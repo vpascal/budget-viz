@@ -1,5 +1,17 @@
-
+// Define a few vars
 var zoom;
+
+//table row highlihgt
+
+function row_highlight(){
+$('table tr').each(function(a,b){
+    $(b).click(function(){
+         $('table tr').css('background','#ffffff');
+         $(this).css('background','#ffbb00');   
+    });
+});
+}
+
 
 // funnel summary
 
@@ -9,7 +21,10 @@ Highcharts.chart('stage', {
     type: 'funnel'
   },
   title: {
-    text: 'Revenue Summary 2016-17'
+    text: 'Revenue Summary 2016-17',
+    style: {
+      fontSize: 22
+    }
   },
   plotOptions: {
     series: {
@@ -44,6 +59,9 @@ Highcharts.chart('stage', {
   }]
 });
   zoom = 'funnel';
+
+  row_highlight(); 
+
 };
 
 // allocations
@@ -90,6 +108,7 @@ $.get(file, function(csv) {
     });
 });
 
+row_highlight();
 
 };
 
@@ -97,6 +116,8 @@ $.get(file, function(csv) {
 // revenue
 
 function gross_revenue(file, title){
+
+zoom = "gross_revenue('revenue.csv","Gross Revenue by Department')";
 
 $.get(file, function(csv) {
     $('#stage').highcharts({
@@ -107,7 +128,10 @@ $.get(file, function(csv) {
             csv: csv
         },
         title: {
-            text:  title 
+            text:  title,
+            style: {
+            fontSize: 22
+            } 
         },
         yAxis: {
             title: {
@@ -116,6 +140,8 @@ $.get(file, function(csv) {
         }
     });
 });
+
+ row_highlight();
 
 };
 
@@ -126,6 +152,8 @@ var revenue_aftertax = gross_revenue;
 // pie chart
 
 function piechart(){
+
+ row_highlight(); 
 
 zoom = 'piechart';
   
@@ -141,7 +169,10 @@ Highcharts.chart('stage', {
 
 
   title: {
-    text: 'Departmental and Center Allocations'
+    text: 'Departmental and Center Allocations',
+    style: {
+      fontSize: 22
+    }
   },
  
  subtitle: {
@@ -209,3 +240,4 @@ $('#zoom').click(function () {
   $('#stage').toggleClass('fullscreen');
   window[zoom]().reflow();
 });
+

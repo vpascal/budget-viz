@@ -11,6 +11,7 @@
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
 <script src="https://code.highcharts.com/modules/funnel.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="style/style.css">
 <body onload='funnel()'>
 
@@ -20,20 +21,20 @@
 <h1>Budget Summary</h1>
 <div class='w3-row'>
 <div id='summary' class='w3-container w3-third'>
-    <table class ='w3-table w3-card w3-bordered w3-hoverable'>
+    <table class ='w3-table w3-card w3-bordered '>
   <tr>
-    <th onmouseover="funnel()"></th>
-    <th onmouseover='funnel()'>2014-15</th>
-    <th onmouseover='funnel()'>2015-16</th>
-    <th onmouseover='funnel()'>2016-17</th>
+    <th onclick='funnel()'></th>
+    <th onclick='funnel()'>2014-15</th>
+    <th onclick='funnel()'>2015-16</th>
+    <th onclick='funnel()'>2016-17</th>
   </tr>
-  <tr onmouseover='gross_revenue("revenue.csv","Gross Revenue by Department")'>
+  <tr onclick='gross_revenue("revenue.csv","Gross Revenue by Department")'>
     <td>Gross Revenue</td>
     <td>$3,598,015<br>  </td>
     <td>$3,662,576</td>
     <td>$3,632,853</td>
   </tr>
-  <tr onmouseover='revenue_aftertax("aftertax.csv","Revenue After University Taxes")'>
+  <tr onclick='revenue_aftertax("aftertax.csv","Revenue After University Taxes")'>
     <td>Revenue After Taxes</td>
     <td>$3,215,583  </td>
     <td>$3,270,585</td>
@@ -51,7 +52,7 @@
     <td>$2,505,062</td>
     <td>$2,464,927</td>
   </tr>
-  <tr onmouseover='piechart()'>
+  <tr onclick='piechart()'>
     <td>Departmental &amp; Center <br>Allocations</td>
     <td>$2,127,871</td>
     <td>$1,896,577</td>
@@ -67,10 +68,11 @@
 
 </div>
 
-
+<i id ='zoom' class="fa fa-search w3-xlarge w3-text-orange"></i>
 <div id="stage" class = 'w3-container w3-twothird chart'>
+
 </div>
-<button id="zoom">Zoom</button>
+
 
 </div>
 

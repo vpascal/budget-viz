@@ -24,11 +24,5 @@ body, h1 {
 
 .fullscreen{
   width: 100%;
-  min-height: 500px;
-}
-
-
-tspan{
-
-	line-height: 1.6;
+  min-height: 650px;
 }
