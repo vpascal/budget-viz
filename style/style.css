@@ -26,3 +26,9 @@ body, h1 {
   width: 100%;
   min-height: 500px;
 }
+
+
+tspan{
+
+	line-height: 1.6;
+}

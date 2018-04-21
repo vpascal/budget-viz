@@ -17,9 +17,14 @@ Highcharts.chart('stage', {
         enabled: true,
         format: '<b>{point.name}</b> ({point.y:,.0f})',
         color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
-        softConnector: true
+        softConnector: true,
+        style: {
+          fontSize: 17,
+          fontWeight: 200,
+          lineHeight: 20
+        }
       },
-      center: ['50%', '50%'],
+      center: ['35%', '50%'],
       neckWidth: '20%',
       neckHeight: '15%',
       width: '45%'
@@ -157,7 +162,12 @@ Highcharts.chart('stage', {
         enabled: true,
         color:'#000000',
         connectorColor: '#000000',
-        format: '{point.name}: {point.percentage: .1f}% <br> Amount:' +'$'+'{point.y: ,.0f}'
+        format: '{point.name}: {point.percentage: .1f}%  <br> Amount:' +'$'+'{point.y: ,.0f}',
+        style: {
+          fontSize: 17,
+          fontWeight: 200,
+          lineHeight: 20
+        }
       },
       showInLegend: true,
        point: {
