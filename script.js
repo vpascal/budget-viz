@@ -133,9 +133,21 @@ $.get(file, function(csv) {
             fontSize: 22
             } 
         },
+        xAxis: {
+         labels:{
+           style: {
+            fontSize: 18
+          }
+        }
+      },
         yAxis: {
             title: {
                 text: 'Revenue'
+            },
+            labels:{
+              style: {
+                fontSize: 16
+              }
             }
         }
     });
@@ -169,7 +181,7 @@ Highcharts.chart('stage', {
 
 
   title: {
-    text: 'Departmental and Center Allocations',
+    text: 'Departmental and Center Allocations: 2016-17',
     style: {
       fontSize: 22
     }
@@ -239,5 +251,14 @@ $('#zoom').click(function () {
   $('#summary').toggle();
   $('#stage').toggleClass('fullscreen');
   window[zoom]().reflow();
+});
+
+$('#plus').click(function () {
+  $('#stage').toggle();
+  $('#summary').toggleClass('fullscreen');
+  $(this).toggleClass('w3-text-orange');
+  $('table').toggleClass('w3-large');
+  $('table').toggleClass('w3-xlarge');
+  $('#zoom').toggle();
 });
 
