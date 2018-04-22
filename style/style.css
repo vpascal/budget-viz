@@ -27,6 +27,7 @@ body, h1 {
   min-height: 500px;
 }
 
+
 @media screen and (min-width: 1025px) and (max-width: 1280px) {
 
    /* Styles for Desktops */
