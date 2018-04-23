@@ -1,16 +1,17 @@
+'use strict';
 // Define a few vars
 var zoom;
 
 //table row highlihgt
 
-function row_highlight(){
+
 $('table tr').each(function(a,b){
     $(b).click(function(){
          $('table tr').css('background','#ffffff');
          $(this).css('background','#ffbb00');   
     });
 });
-}
+
 
 
 // funnel summary
@@ -60,8 +61,6 @@ Highcharts.chart('stage', {
 });
   zoom = 'funnel';
 
-  row_highlight(); 
-
 };
 
 // allocations
@@ -108,16 +107,12 @@ $.get(file, function(csv) {
     });
 });
 
-row_highlight();
-
 };
 
 
 // revenue
 
 function gross_revenue(file, title){
-
-zoom = "gross_revenue('revenue.csv","Gross Revenue by Department')";
 
 $.get(file, function(csv) {
     $('#stage').highcharts({
@@ -153,7 +148,8 @@ $.get(file, function(csv) {
     });
 });
 
- row_highlight();
+zoom = "gross_revenue('revenue.csv','Gross Revenue by Department')";
+
 
 };
 
@@ -164,8 +160,6 @@ var revenue_aftertax = gross_revenue;
 // pie chart
 
 function piechart(){
-
- row_highlight(); 
 
 zoom = 'piechart';
   
@@ -245,6 +239,11 @@ Highcharts.chart('stage', {
 
 })};
 
+//Events
+
+$(window).ready(function (){
+  funnel();
+});
 
 
 $('#zoom').click(function () {
@@ -260,5 +259,27 @@ $('#plus').click(function () {
   $('table').toggleClass('w3-large');
   $('table').toggleClass('w3-xlarge');
   $('#zoom').toggle();
+});
+
+
+$('th').click(function (){
+   funnel();
+});
+
+
+$('#revenue').click(function (){
+   
+   gross_revenue("revenue.csv","Gross Revenue by Department");
+});
+
+
+$('#aftertax').click(function (){
+   revenue_aftertax("aftertax.csv","Revenue After University Taxes");
+});
+
+
+
+$('#pie').click(function (){
+   piechart();
 });
 

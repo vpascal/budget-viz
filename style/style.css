@@ -28,16 +28,11 @@ body, h1 {
 }
 
 
-@media screen and (min-width: 1025px) and (max-width: 1280px) {
+@media screen and (min-device-width: 1025px) {
 
-   /* Styles for Desktops */
+.fullscreen {  /* Styles for Desktops */
   width: 100%;
   min-height: 650px;
  }
 
- media (min-width: 1281px) {
-  
-   width: 100%;
-  min-height: 700px;
-  
 }
