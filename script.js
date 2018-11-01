@@ -296,6 +296,7 @@ Highcharts.chart('enrollment', {
   },
   xAxis: {
       categories: ['2013', '2014', '2015', '2016', '2017', '2018'],
+      crosshair: true,
       tickmarkPlacement: 'on',
       labels: {
         style: {
@@ -317,7 +318,11 @@ Highcharts.chart('enrollment', {
       },
   },
   tooltip: {
-      split: true
+      split: true,
+      style: {
+        fontSize: '20px'
+    }
+      
 
   },
   plotOptions: {
