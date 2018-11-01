@@ -327,7 +327,10 @@ Highcharts.chart('enrollment', {
   },
   plotOptions: {
       series: {
-        fillOpacity:0.9
+        fillOpacity:0.9,
+        animation: {
+            duration: 2000
+        }
       },
       area: {
           stacking: 'normal',
