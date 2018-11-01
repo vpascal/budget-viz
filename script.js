@@ -283,3 +283,69 @@ $('#pie').click(function (){
    piechart();
 });
 
+
+
+//enrollment
+
+Highcharts.chart('enrollment', {
+  chart: {
+      type: 'area'
+  },
+  title: {
+      text: 'Undergraduate, Graduate and Total Enrollment Fall 2013 - Fall 2018'
+  },
+  xAxis: {
+      categories: ['2013', '2014', '2015', '2016', '2017', '2018'],
+      tickmarkPlacement: 'on',
+      labels: {
+        style: {
+            fontSize: '22px'
+        }
+    },
+      title: {
+          enabled: false
+      }
+  },
+  yAxis: {
+    labels: {
+      style: {
+          fontSize: '22px'
+      }
+  },
+      title: {
+          text: 'Headcount'
+      },
+  },
+  tooltip: {
+      split: true
+
+  },
+  plotOptions: {
+      series: {
+        fillOpacity:0.9
+      },
+      area: {
+          stacking: 'normal',
+          lineColor: '#FFFFFF',
+          lineWidth: 2,
+          marker: {
+              radius: 6,
+              lineWidth: 1,
+              lineColor: '#FFFFFF'
+          }
+      }
+  },
+  series: [{
+      name: 'Total',
+      data: [2480,2290,2310,2327,2323,2350],
+      color: "#5591D9"
+  }, {
+      name: 'Graduate',
+      data: [893,851,844,826,825,850],
+      color: '#EF8949'
+  }, {
+      name: 'Undergraduate',
+      data: [1587,1439,1466,1501,1498,1500],
+      color: '#FDDD7A'
+  }]
+});
