@@ -287,7 +287,7 @@ $('#pie').click(function (){
 
 //enrollment
 
-Highcharts.chart('enrollment', {
+var enrollment = Highcharts.chart('enrollment', {
   chart: {
       type: 'area'
   },
@@ -318,16 +318,23 @@ Highcharts.chart('enrollment', {
       },
   },
   tooltip: {
-      split: true,
-      style: {
-        fontSize: '20px'
+      shared: true,
+      useHTML: true,
+      headerFormat: '<small>{point.key}</small><table><tr><td style="color: "black"">Total: </td>' +
+      '<td style="text-align: right"><b>{point.total}</b></td></tr>',
+      pointFormat: 
+           '<tr><td style="color: "black"">{series.name}: </td>' +
+          '<td style="text-align: right"><b>{point.y}</b></td></tr>',
+      footerFormat: '</table>',
+       style: {
+        fontSize: '22px'
     }
       
 
   },
   plotOptions: {
       series: {
-        fillOpacity:0.9,
+        fillOpacity:1,
         animation: {
             duration: 2000
         }
@@ -343,11 +350,7 @@ Highcharts.chart('enrollment', {
           }
       }
   },
-  series: [{
-      name: 'Total',
-      data: [2480,2290,2310,2327,2323,2350],
-      color: "#5591D9"
-  }, {
+  series: [ {
       name: 'Graduate',
       data: [893,851,844,826,825,850],
       color: '#EF8949'
@@ -357,3 +360,15 @@ Highcharts.chart('enrollment', {
       color: '#FDDD7A'
   }]
 });
+
+var renderer;
+renderer = new Highcharts.Renderer(
+    $('#summary')[0],
+    400,
+    300
+);
+
+renderer.text(enrollment.hoverPoint[0], 200, 100).css({
+    fontSize: '16pt',
+    color: 'green'
+}).add();
