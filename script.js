@@ -292,7 +292,10 @@ var enrollment = Highcharts.chart('enrollment', {
       type: 'area'
   },
   title: {
-      text: 'Undergraduate, Graduate and Total Enrollment Fall 2013 - Fall 2018'
+      text: 'Total Enrollment Fall 2013 - Fall 2018' , 
+      style: {
+    fontSize: 26
+  }
   },
   xAxis: {
       categories: ['2013', '2014', '2015', '2016', '2017', '2018'],
@@ -360,15 +363,3 @@ var enrollment = Highcharts.chart('enrollment', {
       color: '#FDDD7A'
   }]
 });
-
-var renderer;
-renderer = new Highcharts.Renderer(
-    $('#summary')[0],
-    400,
-    300
-);
-
-renderer.text(enrollment.hoverPoint[0], 200, 100).css({
-    fontSize: '16pt',
-    color: 'green'
-}).add();
