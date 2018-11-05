@@ -286,6 +286,7 @@ $('#pie').click(function (){
 
 
 //enrollment
+function total_enrollment() {
 
 var enrollment = Highcharts.chart('enrollment', {
   chart: {
@@ -340,11 +341,20 @@ var enrollment = Highcharts.chart('enrollment', {
         fillOpacity:1,
         animation: {
             duration: 2000
+        },
+        cursor: 'pointer',
+        events: {
+            click: function () {
+                if(this.name =='Graduate'){
+                    enrolled('graduate');
+                } else {
+                    enrolled('undergraduate');
+                };
+            }
         }
       },
       area: {
           stacking: 'normal',
-          lineColor: '#FFFFFF',
           lineWidth: 2,
           marker: {
               radius: 6,
@@ -363,3 +373,114 @@ var enrollment = Highcharts.chart('enrollment', {
       color: '#FDDD7A'
   }]
 });
+}
+
+total_enrollment();
+
+function enrolled (type){
+
+    var chartz = Highcharts.chart('enrollment', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Graduate Enrollment' , 
+            style: {
+          fontSize: 26
+        }
+        },
+        xAxis: {
+            categories: ['2013', '2014', '2015', '2016', '2017', '2018'],
+            crosshair: true,
+            tickmarkPlacement: 'on',
+            labels: {
+              style: {
+                  fontSize: '22px'
+              }
+          },
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+            min: 0 ,
+          labels: {
+            style: {
+                fontSize: '22px'
+            }
+        },
+            title: {
+                text: 'Headcount'
+            },
+        },
+        tooltip: {
+            shared: true,
+            useHTML: true,
+            headerFormat: '<small>{point.key}</small><table>',
+            pointFormat: 
+                 '<tr><td style="color: "black"">{series.name}: </td>' +
+                '<td style="text-align: right"><b>{point.y}</b></td></tr>',
+            footerFormat: '</table>',
+             style: {
+              fontSize: '22px'
+          }
+            
+      
+        },
+        series: [],
+
+        exporting: {
+            buttons: {
+                customButton: {
+                    text: '<< Back',
+                    x: -50,
+                    onclick: function () {
+                        total_enrollment();
+                    }
+                }}},
+
+        plotOptions: {
+            series: {
+              fillOpacity:1,
+              animation: {
+                  duration: 2000
+              },
+              cursor: 'pointer'
+            },
+            line: {
+                lineWidth: 2,
+                marker: {
+                    radius: 6,
+                    lineWidth: 1,
+                    lineColor: '#FFFFFF'
+                }
+            }
+        }
+    });   
+
+ if (type == 'graduate'){
+        chartz.addSeries({
+            name: 'Graduate: Actual',
+            data: [893,851,844,826,825,850],
+            color: '#EF8949'
+         }),
+        
+        chartz.addSeries({
+        name: 'Graduate: Projected',
+        data: [873,939,1025,1000,971,1000],
+        color: '#00B2EE'
+        })
+ } else{
+    chartz.addSeries({
+        name: 'Undergraduate: Actual',
+        data: [1587,1439,1466,1501,1498,1500],
+        color: '#EF8949'
+     }),
+    
+    chartz.addSeries({
+    name: 'Undergraduate: Projected',
+    data: [1746,1564,1559,1566,1570,1578],
+    color: '#00B2EE'
+    })
+ }
+}
