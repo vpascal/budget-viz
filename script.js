@@ -301,13 +301,13 @@ function total_enrollment() {
                 fontSize: 26
             }
         },
-        
-    legend: {
-        itemStyle: {
-            fontSize: 22,
-            fontWeight: 400
-        }
-    },
+
+        legend: {
+            itemStyle: {
+                fontSize: 22,
+                fontWeight: 400
+            }
+        },
         xAxis: {
             categories: ['2013', '2014', '2015', '2016', '2017', '2018'],
             crosshair: true,
@@ -356,9 +356,9 @@ function total_enrollment() {
                 events: {
                     click: function () {
                         if (this.name == 'Graduate') {
-                            enrolled('graduate','Graduate Enrollment');
+                            enrolled('graduate', 'Graduate Enrollment');
                         } else {
-                            enrolled('undergraduate','Undergraduate Enrollment');
+                            enrolled('undergraduate', 'Undergraduate Enrollment');
                         };
                     }
                 }
@@ -404,7 +404,7 @@ function enrolled(type, mytitle) {
                 fontWeight: 400,
                 fontSize: 22
             }
-        }, 
+        },
         xAxis: {
             categories: ['2013', '2014', '2015', '2016', '2017', '2018'],
             crosshair: true,
@@ -502,3 +502,55 @@ function enrolled(type, mytitle) {
             })
     }
 }
+
+// additional breakdown; optional display
+
+function enrollment_department(file, mytitle) {
+
+    $.get(file, function (csv) {
+        $('#enrollment').highcharts({
+            chart: {
+                type: 'line'
+            },
+            data: {
+                csv: csv
+            },
+            title: {
+                text: mytitle,
+                style: {
+                    fontSize: 22
+                }
+            },
+            legend: {
+                itemStyle: {
+                    fontSize: 22,
+                    fontWeight: 400
+                }
+            },
+            xAxis: {
+                categories: ['2013', '2014', '2015', '2016', '2017', '2018'],
+                crosshair: true,
+                tickmarkPlacement: 'on',
+                labels: {
+                    style: {
+                        fontSize: '22px'
+                    }
+                },
+                title: {
+                    enabled: false
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Revenue'
+                },
+                labels: {
+                    style: {
+                        fontSize: 16
+                    }
+                }
+            }
+        });
+    });
+
+};
