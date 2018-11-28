@@ -150,7 +150,7 @@ function gross_revenue(file, title) {
         });
     });
 
-    zoom = "gross_revenue('revenue.csv','Gross Revenue by Department')";
+    zoom = "gross_revenue('data/revenue.csv','Gross Revenue by Department')";
 
 
 };
@@ -213,9 +213,9 @@ function piechart() {
                     events: {
                         click: function () {
                             if (this.name == 'Centers and Programs') {
-                                allocation('allocation.csv', 'College Allocations by Centers and Programs');
+                                allocation('data/allocation.csv', 'College Allocations by Centers and Programs');
                             } else {
-                                allocation('depart_allocation.csv', 'College Allocations by Departments')
+                                allocation('data/depart_allocation.csv', 'College Allocations by Departments')
                             };
                         }
                     }
@@ -272,12 +272,12 @@ $('th').click(function () {
 
 $('#revenue').click(function () {
 
-    gross_revenue("revenue.csv", "Gross Revenue by Department");
+    gross_revenue("data/revenue.csv", "Gross Revenue by Department");
 });
 
 
 $('#aftertax').click(function () {
-    revenue_aftertax("aftertax.csv", "Revenue After University Taxes");
+    revenue_aftertax("data/aftertax.csv", "Revenue After University Taxes");
 });
 
 
@@ -301,6 +301,13 @@ function total_enrollment() {
                 fontSize: 26
             }
         },
+        
+    legend: {
+        itemStyle: {
+            fontSize: 22,
+            fontWeight: 400
+        }
+    },
         xAxis: {
             categories: ['2013', '2014', '2015', '2016', '2017', '2018'],
             crosshair: true,
@@ -349,9 +356,9 @@ function total_enrollment() {
                 events: {
                     click: function () {
                         if (this.name == 'Graduate') {
-                            enrolled('graduate');
+                            enrolled('graduate','Graduate Enrollment');
                         } else {
-                            enrolled('undergraduate');
+                            enrolled('undergraduate','Undergraduate Enrollment');
                         };
                     }
                 }
@@ -368,11 +375,11 @@ function total_enrollment() {
         },
         series: [{
             name: 'Graduate',
-            data: [893, 851, 844, 826, 825, 850],
+            data: [893, 851, 838, 826, 825, 768],
             color: '#EF8949'
         }, {
             name: 'Undergraduate',
-            data: [1587, 1439, 1466, 1501, 1498, 1500],
+            data: [1587, 1439, 1450, 1501, 1498, 1404],
             color: '#FDDD7A'
         }]
     });
@@ -380,18 +387,24 @@ function total_enrollment() {
 
 total_enrollment();
 
-function enrolled(type) {
+function enrolled(type, mytitle) {
 
     var chartz = Highcharts.chart('enrollment', {
         chart: {
             type: 'line'
         },
         title: {
-            text: 'Graduate Enrollment',
+            text: mytitle,
             style: {
                 fontSize: 26
             }
         },
+        legend: {
+            itemStyle: {
+                fontWeight: 400,
+                fontSize: 22
+            }
+        }, 
         xAxis: {
             categories: ['2013', '2014', '2015', '2016', '2017', '2018'],
             crosshair: true,
@@ -466,7 +479,7 @@ function enrolled(type) {
     if (type == 'graduate') {
         chartz.addSeries({
             name: 'Graduate: Actual',
-            data: [893, 851, 844, 826, 825, 850],
+            data: [893, 851, 838, 826, 825, 768],
             color: '#EF8949'
         }),
 
@@ -478,7 +491,7 @@ function enrolled(type) {
     } else {
         chartz.addSeries({
             name: 'Undergraduate: Actual',
-            data: [1587, 1439, 1466, 1501, 1498, 1500],
+            data: [1587, 1439, 1450, 1501, 1498, 1404],
             color: '#EF8949'
         }),
 
