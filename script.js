@@ -513,7 +513,7 @@ function enrollment_department(file, mytitle) {
     $.get(file, function (csv) {
         $('#enrollment').highcharts({
             chart: {
-                type: 'line'
+                type: 'spline'
             },
             data: {
                 csv: csv
