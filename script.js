@@ -480,26 +480,26 @@ function enrolled(type, mytitle) {
 
     if (type == 'graduate') {
         chartz.addSeries({
-            name: 'Graduate: Actual',
+            name: 'Actual',
             data: [893, 851, 838, 826, 825, 768],
             color: '#FF2A7F'
         }),
 
             chartz.addSeries({
-                name: 'Graduate: Projected',
+                name: 'Projected',
                 data: [873, 939, 1025, 1000, 971, 1000],
                 color: '#FF2A7F',
                 dashStyle: 'shortdot'
             })
     } else {
         chartz.addSeries({
-            name: 'Undergraduate: Actual',
+            name: 'Actual',
             data: [1587, 1439, 1450, 1501, 1498, 1404],
             color: '#2A7FFF'
         }),
 
             chartz.addSeries({
-                name: 'Undergraduate: Projected',
+                name: 'Projected',
                 data: [1746, 1564, 1559, 1566, 1570, 1578],
                 color: '#2A7FFF',
                 dashStyle: 'shortdot'
