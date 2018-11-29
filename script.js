@@ -336,8 +336,7 @@ function total_enrollment() {
         tooltip: {
             shared: true,
             useHTML: true,
-            headerFormat: '<small>{point.key}</small><table><tr><td style="color: "black"">Total: </td>' +
-                '<td style="text-align: right"><b>{point.total}</b></td></tr>',
+            headerFormat: '<small>{point.key}</small><table>',
             pointFormat:
                 '<tr><td style="color: "black"">{series.name}: </td>' +
                 '<td style="text-align: right"><b>{point.y}</b></td></tr>',
