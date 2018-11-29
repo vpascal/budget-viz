@@ -293,7 +293,7 @@ function total_enrollment() {
 
     var enrollment = Highcharts.chart('enrollment', {
         chart: {
-            type: 'area'
+            type: 'spline'
         },
         title: {
             text: 'Total Enrollment Fall 2013 - Fall 2018',
@@ -303,6 +303,7 @@ function total_enrollment() {
         },
 
         legend: {
+            symbolWidth: 80,
             itemStyle: {
                 fontSize: 22,
                 fontWeight: 400
@@ -322,6 +323,7 @@ function total_enrollment() {
             }
         },
         yAxis: {
+            min: 0,
             labels: {
                 style: {
                     fontSize: '22px'
@@ -363,9 +365,8 @@ function total_enrollment() {
                     }
                 }
             },
-            area: {
-                stacking: 'normal',
-                lineWidth: 2,
+            spline: {
+                lineWidth: 4,
                 marker: {
                     radius: 6,
                     lineWidth: 1,
@@ -376,11 +377,11 @@ function total_enrollment() {
         series: [{
             name: 'Graduate',
             data: [893, 851, 838, 826, 825, 768],
-            color: '#EF8949'
+            color: '#FF2A7F'
         }, {
             name: 'Undergraduate',
             data: [1587, 1439, 1450, 1501, 1498, 1404],
-            color: '#FDDD7A'
+            color: '#2A7FFF'
         }]
     });
 }
@@ -391,7 +392,7 @@ function enrolled(type, mytitle) {
 
     var chartz = Highcharts.chart('enrollment', {
         chart: {
-            type: 'line'
+            type: 'spline'
         },
         title: {
             text: mytitle,
@@ -400,6 +401,7 @@ function enrolled(type, mytitle) {
             }
         },
         legend: {
+            symbolWidth: 80,
             itemStyle: {
                 fontWeight: 400,
                 fontSize: 22
@@ -465,8 +467,8 @@ function enrolled(type, mytitle) {
                 },
                 cursor: 'pointer'
             },
-            line: {
-                lineWidth: 2,
+            spline: {
+                lineWidth: 4,
                 marker: {
                     radius: 6,
                     lineWidth: 1,
@@ -480,25 +482,27 @@ function enrolled(type, mytitle) {
         chartz.addSeries({
             name: 'Graduate: Actual',
             data: [893, 851, 838, 826, 825, 768],
-            color: '#EF8949'
+            color: '#FF2A7F'
         }),
 
             chartz.addSeries({
                 name: 'Graduate: Projected',
                 data: [873, 939, 1025, 1000, 971, 1000],
-                color: '#00B2EE'
+                color: '#FF2A7F',
+                dashStyle: 'shortdot'
             })
     } else {
         chartz.addSeries({
             name: 'Undergraduate: Actual',
             data: [1587, 1439, 1450, 1501, 1498, 1404],
-            color: '#EF8949'
+            color: '#2A7FFF'
         }),
 
             chartz.addSeries({
                 name: 'Undergraduate: Projected',
                 data: [1746, 1564, 1559, 1566, 1570, 1578],
-                color: '#00B2EE'
+                color: '#2A7FFF',
+                dashStyle: 'shortdot'
             })
     }
 }
