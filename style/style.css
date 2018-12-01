@@ -42,3 +42,12 @@ body, h1 {
 .highcharts-root {
     font-family: 'Fira Sans', sans-serif !important;
 }
+
+.buttons{
+  margin: auto;
+  width: 50%;
+}
+
+.btn{
+  margin: auto;
+}

@@ -287,6 +287,7 @@ $('#pie').click(function () {
 });
 
 
+let type_clicked;
 
 //enrollment
 function total_enrollment() {
@@ -357,8 +358,13 @@ function total_enrollment() {
                 events: {
                     click: function () {
                         if (this.name == 'Graduate') {
+                            type_clicked='Graduate';
+                            display_button();
                             enrolled('graduate', 'Graduate Enrollment');
+                            
                         } else {
+                            type_clicked='Undergraduate';
+                            display_button();
                             enrolled('undergraduate', 'Undergraduate Enrollment');
                         };
                     }
@@ -452,6 +458,7 @@ function enrolled(type, mytitle) {
                     text: '<< Back',
                     x: -50,
                     onclick: function () {
+                        display_button();
                         total_enrollment();
                     }
                 }
@@ -509,7 +516,6 @@ function enrolled(type, mytitle) {
 // additional breakdown; optional display
 
 function enrollment_department(file, mytitle) {
-
     $.get(file, function (csv) {
         $('#enrollment').highcharts({
             chart: {
@@ -528,6 +534,18 @@ function enrollment_department(file, mytitle) {
                 itemStyle: {
                     fontSize: 22,
                     fontWeight: 400
+                }
+            },
+            exporting: {
+                buttons: {
+                    customButton: {
+                        text: '<< Back',
+                        x: -50,
+                        onclick: function () {
+                            display_button();
+                            total_enrollment();
+                        }
+                    }
                 }
             },
             xAxis: {
@@ -557,3 +575,30 @@ function enrollment_department(file, mytitle) {
     });
 
 };
+
+
+function display_button(){
+    let x = document.getElementById("mybutton");
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+    
+}
+
+
+var departments = document.querySelector(".btn");
+departments.addEventListener('click', function(){
+   // departments.innerText = '<< Back';  
+        if(type_clicked=='Graduate'){
+        enrollment_department('data/graduate_department.csv', "Graduate Enrollement by Departments");
+        
+        } else{
+
+            enrollment_department('data/undergrad_department.csv', "Undergraduate Enrollement by Departments");
+
+        }
+
+    });
+
