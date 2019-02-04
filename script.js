@@ -4,15 +4,12 @@ var zoom;
 
 //table row highlihgt
 
-
 $('table tr').each(function (a, b) {
     $(b).click(function () {
         $('table tr').css('background', '#ffffff');
         $(this).css('background', '#ffbb00');
     });
 });
-
-
 
 // funnel summary
 
@@ -286,7 +283,6 @@ $('#pie').click(function () {
     piechart();
 });
 
-
 let type_clicked;
 
 //enrollment
@@ -358,12 +354,12 @@ function total_enrollment() {
                 events: {
                     click: function () {
                         if (this.name == 'Graduate') {
-                            type_clicked='Graduate';
+                            type_clicked = 'Graduate';
                             display_button();
                             enrolled('graduate', 'Graduate Enrollment');
-                            
+
                         } else {
-                            type_clicked='Undergraduate';
+                            type_clicked = 'Undergraduate';
                             display_button();
                             enrolled('undergraduate', 'Undergraduate Enrollment');
                         };
@@ -577,28 +573,27 @@ function enrollment_department(file, mytitle) {
 };
 
 
-function display_button(){
+function display_button() {
     let x = document.getElementById("mybutton");
     if (x.style.display === 'none') {
         x.style.display = 'block';
     } else {
         x.style.display = 'none';
     }
-    
+
 }
 
-
 var departments = document.querySelector(".btn");
-departments.addEventListener('click', function(){
-   // departments.innerText = '<< Back';  
-        if(type_clicked=='Graduate'){
+departments.addEventListener('click', function () {
+    // departments.innerText = '<< Back';  
+    if (type_clicked == 'Graduate') {
         enrollment_department('data/graduate_department.csv', "Graduate Enrollement by Departments");
-        
-        } else{
 
-            enrollment_department('data/undergrad_department.csv', "Undergraduate Enrollement by Departments");
+    } else {
 
-        }
+        enrollment_department('data/undergrad_department.csv', "Undergraduate Enrollement by Departments");
 
-    });
+    }
+
+});
 
