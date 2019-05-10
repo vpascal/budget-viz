@@ -16,14 +16,19 @@
 
 <div class="w3-container">
   <h1>Budget Summary</h1>
+  <div id='info'> 
+    <img src='click.svg' height="42" width="42">
+    Table rows, the header, and the charts are clickable.
+  </div>
+  <br>
   <div class='w3-row'>
     <div id='summary' class='w3-container w3-third'>
       <table class='w3-table w3-card w3-bordered '>
         <tr>
           <th><i id='plus' class="fa fa-plus w3-xlarge w3-text-orange"></i></th>
-          <th>2014-15</th>
           <th>2015-16</th>
           <th>2016-17</th>
+          <th>2017-18</th>
         </tr>
         <tr id='revenue'>
           <td>Gross Revenue</td>
@@ -67,9 +72,13 @@
 
     <i id='zoom' class="fa fa-search-plus w3-xlarge w3-text-orange"></i>
     <div id="stage" class='w3-container w3-twothird chart'>
-
     </div>
   </div>
+  <div class='links'>
+<a href="enrollment.html"><img src='analytics.svg' height="62" width="92">
+  <p>Student Enrollment >></p> 
+</a>
+</div>
 
   <script src="script.js"></script>
   </body>

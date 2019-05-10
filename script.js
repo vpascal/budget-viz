@@ -19,7 +19,7 @@ function funnel() {
             type: 'funnel'
         },
         title: {
-            text: 'Revenue Summary 2016-17',
+            text: 'Revenue Summary 2017-18',
             style: {
                 fontSize: 22
             }
@@ -174,7 +174,7 @@ function piechart() {
 
 
         title: {
-            text: 'Departmental and Center Allocations: 2016-17',
+            text: 'Departmental and Center Allocations: 2017-18',
             style: {
                 fontSize: 22
             }
